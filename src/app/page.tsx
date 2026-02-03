@@ -9,7 +9,6 @@ import {
   Zap, LayoutGrid, Calendar, Info,
   Home, Clock, MousePointer2, UserCheck
 } from 'lucide-react';
-import Link from 'next/link';
 
 const QuestionTooltip = ({ why, impact, position = 'top' }: { why: string; impact: string; position?: 'top' | 'bottom' }) => {
   return (
@@ -648,46 +647,8 @@ export default function SalesDeck() {
   return (
     <div className="min-h-screen bg-[#0F172A] text-slate-200 font-sans antialiased overflow-hidden selection:bg-blue-500/30 flex flex-col">
       <IntroModal isOpen={showIntro} onClose={closeIntro} />
-      {/* Navigation */}
-      <nav className="h-12 border-b border-white/10 bg-[#0F172A]/80 backdrop-blur-xl flex items-center justify-between px-6 md:px-8 shrink-0 z-40">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-7 h-7 bg-white/5 rounded-lg flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-all">
-              <ChevronLeft size={14} className="text-slate-400 group-hover:text-white" />
-            </div>
-            <div className="flex flex-col">
-              <h1 className="font-black text-[10px] tracking-[0.2em] uppercase leading-none text-white">Sales Deck</h1>
-              <p className="text-[8px] text-slate-500 font-bold tracking-widest uppercase mt-0.5">Interactive Draft</p>
-            </div>
-          </Link>
-        </div>
 
-        <div className="hidden md:flex items-center gap-1 bg-white/5 p-0.5 rounded-lg border border-white/10">
-          {SLIDES.map((slide, i) => (
-            <button
-              key={slide.id}
-              onClick={() => setCurrentSlide(i)}
-              className={`px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest transition-all ${
-                currentSlide === i 
-                  ? 'bg-white text-slate-950 shadow-lg' 
-                  : 'text-slate-500 hover:text-slate-300'
-              }`}
-            >
-              {slide.title}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-4">
-           <div className="w-px h-5 bg-white/10 mx-2 hidden sm:block" />
-           <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Live Pilot</span>
-           </div>
-        </div>
-      </nav>
-
-      <main className="flex-1 flex flex-col max-w-7xl mx-auto w-full p-4 md:p-6 overflow-y-auto custom-scrollbar">
+      <main className="flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full p-4 md:p-6 overflow-y-auto custom-scrollbar">
         {/* Progress Bar */}
         <div className="w-full h-1 bg-white/5 rounded-full mb-4 overflow-hidden">
           <div 
