@@ -32,7 +32,7 @@ const QuestionTooltip = ({ why, impact, position = 'top' }: { why: string; impac
   );
 };
 
-const SLIDES = [
+const STEPS = [
   { id: 'problem', title: 'Problem Validation' },
   { id: 'impact', title: 'Financial Impact' },
   { id: 'solution', title: 'Solution Value' },
@@ -185,7 +185,7 @@ const QUESTIONS = [
   },
   {
     key: 'securityDeposit',
-    title: 'Average Security Deposit / Upfront Rent',
+    title: 'Security Deposit / Upfront Rent',
     icon: Wallet,
     color: 'text-blue-400',
     bg: 'bg-blue-500/20',
@@ -297,7 +297,7 @@ export default function SalesDeck() {
     setShowIntro(false);
   };
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({
     payments: '',
@@ -321,8 +321,8 @@ export default function SalesDeck() {
     }
   };
 
-  const nextSlide = () => setCurrentSlide(prev => Math.min(prev + 1, SLIDES.length - 1));
-  const prevSlide = () => setCurrentSlide(prev => Math.max(prev - 1, 0));
+  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, STEPS.length - 1));
+  const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 0));
 
   const fitScore = useMemo(() => {
     let score = 10;
@@ -365,8 +365,8 @@ export default function SalesDeck() {
     return Math.min(score, 100);
   }, [answers]);
 
-  const renderSlide = () => {
-    switch (currentSlide) {
+  const renderStep = () => {
+    switch (currentStep) {
       case 0:
         return (
           <div className="flex flex-col lg:flex-row gap-6 animate-in fade-in slide-in-from-right-4 duration-500">
@@ -436,8 +436,9 @@ export default function SalesDeck() {
                 if (!isVisible) {
                   return (
                     <div key={q.key} className="glass-card p-2 rounded-xl border border-white/5 bg-white/[0.01] h-[163px] flex items-center justify-center transition-all duration-500">
-                       <div className="w-8 h-8 rounded-full border border-white/5 flex items-center justify-center">
-                          <span className="text-[10px] font-black text-slate-800">{i + 1}</span>
+                       <div className="w-16 h-16 rounded-full border border-white/20 flex flex-col items-center justify-center bg-white/5">
+                          <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Step</span>
+                          <span className="text-xl font-black text-slate-400">{String(i + 1).padStart(2, '0')}</span>
                        </div>
                     </div>
                   );
@@ -653,22 +654,22 @@ export default function SalesDeck() {
         <div className="w-full h-1 bg-white/5 rounded-full mb-4 overflow-hidden">
           <div 
             className="h-full bg-blue-500 transition-all duration-500 ease-out shadow-[0_0_10px_rgba(59,130,246,0.6)]" 
-            style={{ width: `${((currentSlide + 1) / SLIDES.length) * 100}%` }}
+            style={{ width: `${((currentStep + 1) / STEPS.length) * 100}%` }}
           />
         </div>
 
         {/* Content Area */}
         <div className="flex-1">
-          {renderSlide()}
+          {renderStep()}
         </div>
 
         {/* Footer Controls */}
         <div className="mt-6 flex items-center justify-between pt-4 border-t border-white/5">
            <button 
-             onClick={prevSlide}
-             disabled={currentSlide === 0}
+             onClick={prevStep}
+             disabled={currentStep === 0}
              className={`flex items-center gap-2 px-6 py-2 rounded-xl font-bold text-xs transition-all ${
-               currentSlide === 0 ? 'text-slate-700 cursor-not-allowed' : 'text-slate-400 hover:text-white hover:bg-white/5'
+               currentStep === 0 ? 'text-slate-700 cursor-not-allowed' : 'text-slate-400 hover:text-white hover:bg-white/5'
              }`}
            >
               <ChevronLeft size={16} />
@@ -676,24 +677,24 @@ export default function SalesDeck() {
            </button>
 
            <div className="flex gap-2">
-              {SLIDES.map((_, i) => (
+              {STEPS.map((_, i) => (
                 <div 
                   key={i} 
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${currentSlide === i ? 'bg-blue-500 w-4' : 'bg-white/10'}`} 
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${currentStep === i ? 'bg-blue-500 w-4' : 'bg-white/10'}`} 
                 />
               ))}
            </div>
 
            <button 
-             onClick={nextSlide}
-             disabled={currentSlide === SLIDES.length - 1}
+             onClick={nextStep}
+             disabled={currentStep === STEPS.length - 1}
              className={`flex items-center gap-2 px-8 py-2 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all ${
-               currentSlide === SLIDES.length - 1 
+               currentStep === STEPS.length - 1 
                  ? 'bg-slate-800 text-slate-500 cursor-not-allowed' 
                  : 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/20'
              }`}
            >
-              {currentSlide === SLIDES.length - 1 ? 'End of Deck' : 'NEXT STEP'}
+              {currentStep === STEPS.length - 1 ? 'End of Deck' : 'NEXT STEP'}
               <ChevronRight size={16} />
            </button>
         </div>
