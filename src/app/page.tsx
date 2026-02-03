@@ -56,10 +56,10 @@ const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                 <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">The CasaPay Loop</span>
              </div>
              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-                Complete Rental Lifecycle <br/><span className="text-blue-400">Automated & Guaranteed.</span>
+                Rental Cashflow <br/><span className="text-blue-400">Autopilot.</span>
              </h2>
              <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
-                CasaPay closes the loop between tenant vetting, automated collections, and global debt recovery—with 100% payout guarantee.
+                CasaPay is the financial engine that powers your Rental Finance Lifecycle—automating collections, securing payouts, and guaranteeing 100% cashflow stability.
              </p>
           </div>
 
@@ -91,7 +91,7 @@ const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             onClick={onClose}
             className="group relative px-10 py-5 bg-white text-slate-950 rounded-2xl font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)] hover:shadow-white/30"
           >
-            Start Diagnostic
+            START VALIDATION
             <div className="absolute inset-0 rounded-2xl bg-white blur-lg opacity-0 group-hover:opacity-20 transition-opacity" />
           </button>
         </div>
