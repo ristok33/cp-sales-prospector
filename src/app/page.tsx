@@ -17,12 +17,12 @@ const QuestionTooltip = ({ why, impact, position = 'top' }: { why: string; impac
       <div className={`absolute z-[9999] ${position === 'bottom' ? 'top-full mt-2 -translate-y-2' : 'bottom-full mb-2 translate-y-2'} right-0 w-64 p-4 bg-slate-900/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 group-hover:translate-y-0 pointer-events-none`}>
         <div className="space-y-3">
           <div className="space-y-1">
-            <p className="text-[9px] font-black text-blue-400 uppercase tracking-[0.2em]">The "Why"</p>
+            <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">The "Why"</p>
             <p className="text-[11px] text-slate-200 leading-relaxed font-medium">{why}</p>
           </div>
           <div className="h-px bg-white/5 w-full" />
           <div className="space-y-1">
-            <p className="text-[9px] font-black text-emerald-400 uppercase tracking-[0.2em]">Business Impact</p>
+            <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">Business Impact</p>
             <p className="text-[11px] text-slate-200 leading-relaxed font-medium">{impact}</p>
           </div>
         </div>
@@ -43,10 +43,10 @@ const QUESTIONS = [
     key: 'portfolioSize',
     title: 'Portfolio Size',
     icon: LayoutGrid,
-    color: 'text-indigo-400',
-    bg: 'bg-indigo-500/20',
-    activeClass: 'bg-indigo-500/10 border-indigo-500/50 text-indigo-400',
-    dotClass: 'border-indigo-500 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Determines total revenue opportunity and operational scale.',
     impact: 'Larger portfolios benefit more from automated collection and batch processing.',
     options: [
@@ -59,10 +59,10 @@ const QUESTIONS = [
     key: 'contractDuration',
     title: 'Average Contract Duration',
     icon: Calendar,
-    color: 'text-pink-400',
-    bg: 'bg-pink-500/20',
-    activeClass: 'bg-pink-500/10 border-pink-500/50 text-pink-400',
-    dotClass: 'border-pink-500 bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Measures tenant turnover velocity.',
     impact: 'Shorter contracts mean higher admin burden; CasaPay automates the repeat screening and setup.',
     options: [
@@ -75,10 +75,10 @@ const QUESTIONS = [
     key: 'tenants',
     title: 'Local vs Foreigner Ratio',
     icon: Globe,
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/20',
-    activeClass: 'bg-purple-500/10 border-purple-500/50 text-purple-400',
-    dotClass: 'border-purple-500 bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Foreigners are often forced into massive upfront rent.',
     impact: 'CasaPay eliminates the need for 6-12 month upfront payments, opening your property to a global market.',
     options: [
@@ -91,10 +91,10 @@ const QUESTIONS = [
     key: 'type',
     title: 'Students vs Professionals',
     icon: GraduationCap,
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/20',
-    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400',
-    dotClass: 'border-emerald-500 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Students often lack credit history.',
     impact: 'Our embedded screening replaces traditional credit checks, making student default risk manageable.',
     options: [
@@ -107,10 +107,10 @@ const QUESTIONS = [
     key: 'occupancyRate',
     title: 'Occupancy Rate',
     icon: Home,
-    color: 'text-teal-400',
-    bg: 'bg-teal-500/20',
-    activeClass: 'bg-teal-500/10 border-teal-500/50 text-teal-400',
-    dotClass: 'border-teal-500 bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Measures inventory efficiency.',
     impact: 'High vacancy costs are often linked to friction in the deposit/onboarding flow.',
     options: [
@@ -123,10 +123,10 @@ const QUESTIONS = [
     key: 'timeToContract',
     title: 'Time to Contract',
     icon: Clock,
-    color: 'text-orange-400',
-    bg: 'bg-orange-500/20',
-    activeClass: 'bg-orange-500/10 border-orange-500/50 text-orange-400',
-    dotClass: 'border-orange-500 bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Measures sales cycle velocity.',
     impact: 'Reducing friction with CasaPay speeds up the move-in process and reduces empty room days.',
     options: [
@@ -139,10 +139,10 @@ const QUESTIONS = [
     key: 'payments',
     title: 'Online Payments',
     icon: CreditCard,
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/20',
-    activeClass: 'bg-blue-500/10 border-blue-500/50 text-blue-400',
-    dotClass: 'border-blue-500 bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Validates current tech stack.',
     impact: 'Manual/Cash workflows are high-risk and labor-intensive; we provide a digital first-path.',
     options: [
@@ -155,10 +155,10 @@ const QUESTIONS = [
     key: 'onlineBooking',
     title: 'Online Booking Option',
     icon: MousePointer2,
-    color: 'text-indigo-400',
-    bg: 'bg-indigo-500/20',
-    activeClass: 'bg-indigo-500/10 border-indigo-500/50 text-indigo-400',
-    dotClass: 'border-indigo-500 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Measures conversion friction.',
     impact: 'Manual bookings are the #1 bottleneck for scaling; CasaPay enables instant, digital-first onboarding.',
     options: [
@@ -171,10 +171,10 @@ const QUESTIONS = [
     key: 'pms',
     title: 'PMS',
     icon: Briefcase,
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/20',
-    activeClass: 'bg-purple-500/10 border-purple-500/50 text-purple-400',
-    dotClass: 'border-purple-500 bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Determines technical maturity and integration path.',
     impact: " 'No' or '3rd party' means our @casapay.me alias logic is perfect; 'In-house' suggests a robust direct API integration opportunity.",
     options: [
@@ -187,10 +187,10 @@ const QUESTIONS = [
     key: 'securityDeposit',
     title: 'Security Deposit / Upfront Rent',
     icon: Wallet,
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/20',
-    activeClass: 'bg-blue-500/10 border-blue-500/50 text-blue-400',
-    dotClass: 'border-blue-500 bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'High deposits are the #1 cause of tenant drop-off.',
     impact: 'Reducing deposits increases your conversion rate and lead flow immediately.',
     options: [
@@ -203,10 +203,10 @@ const QUESTIONS = [
     key: 'latePayers',
     title: 'Late Payers %',
     icon: TrendingDown,
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/20',
-    activeClass: 'bg-amber-500/10 border-amber-500/50 text-amber-400',
-    dotClass: 'border-amber-500 bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Measures operational drag.',
     impact: 'We guarantee on-time payouts, removing the need for manual debt collection and follow-ups.',
     options: [
@@ -219,10 +219,10 @@ const QUESTIONS = [
     key: 'defaultRate',
     title: 'Default %',
     icon: AlertCircle,
-    color: 'text-red-400',
-    bg: 'bg-red-500/20',
-    activeClass: 'bg-red-500/10 border-red-500/50 text-red-400',
-    dotClass: 'border-red-500 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]',
+    color: 'text-slate-400',
+    bg: 'bg-slate-500/20',
+    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
+    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
     why: 'Direct hit to NOI (Net Operating Income).',
     impact: 'CasaPay covers the loss, ensuring your cashflow is protected even if a tenant defaults.',
     options: [
@@ -240,13 +240,13 @@ const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-300">
       <div className="max-w-4xl w-full glass-card rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden border-white/20 shadow-2xl">
         {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 blur-[100px] -mr-48 -mt-48 rounded-full" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 blur-[100px] -ml-48 -mb-48 rounded-full" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-slate-500/10 blur-[100px] -mr-48 -mt-48 rounded-full" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-500/10 blur-[100px] -ml-48 -mb-48 rounded-full" />
         
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
           <div className="space-y-3">
              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-                Rental Cashflow <span className="text-blue-400">Autopilot.</span>
+                Rental Cashflow <span className="text-slate-400">Autopilot.</span>
              </h2>
              <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
                 The financial engine for your <span className="text-white">Rental Finance Lifecycle</span>—automating collections and guaranteeing 100% cashflow stability.
@@ -259,10 +259,10 @@ const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
              <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-8" />
              
              {[
-               { step: 1, title: 'Vetting', icon: UserCheck, desc: 'Tenant acquisition & risk assessment', color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
-               { step: 2, title: 'Collections', icon: CreditCard, desc: 'Automated rent & deposit payments', color: 'text-blue-400', bg: 'bg-blue-500/10' },
-               { step: 3, title: 'Guarantee', icon: ShieldCheck, desc: 'Proactive 100% payment security', color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
-               { step: 4, title: 'Recovery', icon: Globe, desc: 'Global debt collection & legal', color: 'text-purple-400', bg: 'bg-purple-500/10' },
+               { step: 1, title: 'Vetting', icon: UserCheck, desc: 'Tenant acquisition & risk assessment', color: 'text-slate-400', bg: 'bg-slate-500/10' },
+               { step: 2, title: 'Collections', icon: CreditCard, desc: 'Automated rent & deposit payments', color: 'text-slate-400', bg: 'bg-slate-500/10' },
+               { step: 3, title: 'Guarantee', icon: ShieldCheck, desc: 'Proactive 100% payment security', color: 'text-slate-400', bg: 'bg-slate-500/10' },
+               { step: 4, title: 'Recovery', icon: Globe, desc: 'Global debt collection & legal', color: 'text-slate-400', bg: 'bg-slate-500/10' },
              ].map((item, i) => (
                <div key={i} className="relative group p-6 rounded-3xl bg-white/5 border border-white/5 hover:border-white/10 transition-all duration-500 hover:-translate-y-1">
                   <div className={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/5 group-hover:scale-110 transition-transform duration-500`}>
@@ -471,7 +471,7 @@ export default function SalesDeck() {
                         >
                           <div className="flex items-center gap-2">
                             <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                            <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
+                            <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-slate-500/10 text-slate-400' : 'bg-white/5 text-slate-500'}`}>
                               +{opt.weight}
                             </span>
                           </div>
@@ -530,51 +530,51 @@ export default function SalesDeck() {
                    <div className="space-y-2">
                       <div className="flex justify-between text-xs font-black uppercase tracking-widest text-slate-400">
                          <span>Collected on Time</span>
-                         <span className="text-emerald-400">{isHighLate ? '65%' : isMedLate ? '80%' : '92%'}</span>
+                         <span className="text-slate-200">{isHighLate ? '65%' : isMedLate ? '80%' : '92%'}</span>
                       </div>
                       <div className="h-3 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                         <div className={`h-full bg-emerald-500 ${isHighLate ? 'w-[65%]' : isMedLate ? 'w-[80%]' : 'w-[92%]'} shadow-[0_0_12px_rgba(16,185,129,0.4)]`} />
+                         <div className={`h-full bg-slate-400 ${isHighLate ? 'w-[65%]' : isMedLate ? 'w-[80%]' : 'w-[92%]'} shadow-[0_0_12px_rgba(148,163,184,0.4)]`} />
                       </div>
                    </div>
 
                    <div className="space-y-2">
                       <div className="flex justify-between text-xs font-black uppercase tracking-widest text-slate-400">
                          <span>Late Payments (30+ days)</span>
-                         <span className="text-amber-400">{isHighLate ? '25%' : isMedLate ? '15%' : '7%'}</span>
+                         <span className="text-slate-300">{isHighLate ? '25%' : isMedLate ? '15%' : '7%'}</span>
                       </div>
                       <div className="h-3 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                         <div className={`h-full bg-amber-500 ${isHighLate ? 'w-[25%]' : isMedLate ? 'w-[15%]' : 'w-[7%]'} shadow-[0_0_12px_rgba(245,158,11,0.4)]`} />
+                         <div className={`h-full bg-slate-500 ${isHighLate ? 'w-[25%]' : isMedLate ? 'w-[15%]' : 'w-[7%]'} shadow-[0_0_12px_rgba(100,116,139,0.4)]`} />
                       </div>
                    </div>
 
                    <div className="space-y-2">
                       <div className="flex justify-between text-xs font-black uppercase tracking-widest text-slate-400">
                          <span>Default / Bad Debt</span>
-                         <span className="text-red-500">{isHighDefault ? '10%' : isMedDefault ? '5%' : '1%'}</span>
+                         <span className="text-slate-400">{isHighDefault ? '10%' : isMedDefault ? '5%' : '1%'}</span>
                       </div>
                       <div className="h-3 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                         <div className={`h-full bg-red-500 ${isHighDefault ? 'w-[10%]' : isMedDefault ? 'w-[5%]' : 'w-[1%]'} shadow-[0_0_12px_rgba(239,68,68,0.4)]`} />
+                         <div className={`h-full bg-slate-600 ${isHighDefault ? 'w-[10%]' : isMedDefault ? 'w-[5%]' : 'w-[1%]'} shadow-[0_0_12px_rgba(71,85,105,0.4)]`} />
                       </div>
                    </div>
 
                    <div className="space-y-2">
                       <div className="flex justify-between text-xs font-black uppercase tracking-widest text-slate-400">
                          <span>Vacancy / Velocity Loss</span>
-                         <span className="text-blue-400">{isLowOccupancy ? '25%' : isMedOccupancy ? '12%' : '4%'}</span>
+                         <span className="text-slate-500">{isLowOccupancy ? '25%' : isMedOccupancy ? '12%' : '4%'}</span>
                       </div>
                       <div className="h-3 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                         <div className={`h-full bg-blue-500 ${isLowOccupancy ? 'w-[25%]' : isMedOccupancy ? 'w-[12%]' : 'w-[4%]'} shadow-[0_0_12px_rgba(59,130,246,0.4)]`} />
+                         <div className={`h-full bg-slate-700 ${isLowOccupancy ? 'w-[25%]' : isMedOccupancy ? 'w-[12%]' : 'w-[4%]'} shadow-[0_0_12px_rgba(51,65,85,0.4)]`} />
                       </div>
                    </div>
                 </div>
 
-                <div className="mt-10 p-6 rounded-2xl bg-red-500/10 border border-red-500/20">
+                <div className="mt-10 p-6 rounded-2xl bg-white/5 border border-white/10">
                    <div className="flex items-start gap-4">
-                      <AlertCircle className="text-red-500 shrink-0 mt-1" size={20} />
+                      <AlertCircle className="text-slate-400 shrink-0 mt-1" size={20} />
                       <div>
                         <p className="text-sm font-bold text-slate-200">Revenue Leakage Detected</p>
                         <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                          Your current model loses approximately <span className="text-red-400 font-black">€{leakage.toLocaleString()} / year</span> in interest-free credit given to tenants and recovery costs.
+                          Your current model loses approximately <span className="text-slate-200 font-black">€{leakage.toLocaleString()} / year</span> in interest-free credit given to tenants and recovery costs.
                         </p>
                       </div>
                    </div>
@@ -601,9 +601,9 @@ export default function SalesDeck() {
         return (
           <div className="flex flex-col items-center justify-center h-full space-y-12 animate-in fade-in slide-in-from-top-4 duration-700">
              <div className="text-center space-y-4 max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 rounded-full border border-emerald-500/30 mb-2">
-                   <ShieldCheck size={14} className="text-emerald-500" />
-                   <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">The CasaPay Advantage</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-500/10 rounded-full border border-slate-500/30 mb-2">
+                   <ShieldCheck size={14} className="text-slate-400" />
+                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">The CasaPay Advantage</span>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">Zero-Risk Cashflow</h2>
                 <p className="text-slate-400 text-lg font-medium leading-relaxed">
@@ -613,16 +613,16 @@ export default function SalesDeck() {
 
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
                 {[
-                  { title: '100% Guaranteed', desc: 'Full rent protection against tenant defaults and late payments.', icon: ShieldCheck, color: 'text-emerald-400' },
-                  { title: 'Automated Admin', desc: 'Eliminate manual reconciliation with automated bank-grade sync.', icon: Zap, color: 'text-blue-400' },
-                  { title: 'Global Coverage', desc: 'Seamlessly accept payments from international students and expats.', icon: Globe, color: 'text-purple-400' },
+                  { title: '100% Guaranteed', desc: 'Full rent protection against tenant defaults and late payments.', icon: ShieldCheck, color: 'text-slate-400' },
+                  { title: 'Automated Admin', desc: 'Eliminate manual reconciliation with automated bank-grade sync.', icon: Zap, color: 'text-slate-400' },
+                  { title: 'Global Coverage', desc: 'Seamlessly accept payments from international students and expats.', icon: Globe, color: 'text-slate-400' },
                   { 
                     title: 'Integration Path', 
                     desc: answers.pms === 'in-house' 
                       ? 'Direct API integration for deep, bi-directional sync with your custom PMS.' 
                       : 'Lightweight Alias integration via @casapay.me logic—live in hours, not weeks.', 
                     icon: Zap, 
-                    color: 'text-amber-400' 
+                    color: 'text-slate-400' 
                   },
                 ].map((feature, i) => (
                   <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all hover:-translate-y-1 group">
@@ -635,7 +635,7 @@ export default function SalesDeck() {
                 ))}
              </div>
 
-             <button className="px-8 py-4 bg-white text-slate-950 rounded-2xl font-black uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-emerald-400/30">
+             <button className="px-8 py-4 bg-white text-slate-950 rounded-2xl font-black uppercase tracking-[0.15em] hover:bg-slate-300 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-white/30">
                 Start Pilot Deployment
              </button>
           </div>
@@ -653,7 +653,7 @@ export default function SalesDeck() {
         {/* Progress Bar */}
         <div className="w-full h-1 bg-white/5 rounded-full mb-4 overflow-hidden">
           <div 
-            className="h-full bg-blue-500 transition-all duration-500 ease-out shadow-[0_0_10px_rgba(59,130,246,0.6)]" 
+            className="h-full bg-slate-400 transition-all duration-500 ease-out shadow-[0_0_10px_rgba(148,163,184,0.6)]" 
             style={{ width: `${((currentStep + 1) / STEPS.length) * 100}%` }}
           />
         </div>
@@ -680,7 +680,7 @@ export default function SalesDeck() {
               {STEPS.map((_, i) => (
                 <div 
                   key={i} 
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${currentStep === i ? 'bg-blue-500 w-4' : 'bg-white/10'}`} 
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${currentStep === i ? 'bg-slate-400 w-4' : 'bg-white/10'}`} 
                 />
               ))}
            </div>
@@ -691,7 +691,7 @@ export default function SalesDeck() {
              className={`flex items-center gap-2 px-8 py-2 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all ${
                currentStep === STEPS.length - 1 
                  ? 'bg-slate-800 text-slate-500 cursor-not-allowed' 
-                 : 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/20'
+                 : 'bg-slate-200 text-slate-950 hover:bg-white shadow-lg shadow-white/10'
              }`}
            >
               {currentStep === STEPS.length - 1 ? 'End of Deck' : 'NEXT STEP'}
