@@ -45,8 +45,8 @@ const QUESTIONS = [
     icon: LayoutGrid,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Determines total revenue opportunity and operational scale.',
     impact: 'Larger portfolios benefit more from automated collection and batch processing.',
     options: [
@@ -61,8 +61,8 @@ const QUESTIONS = [
     icon: Calendar,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Measures tenant turnover velocity.',
     impact: 'Shorter contracts mean higher admin burden; CasaPay automates the repeat screening and setup.',
     options: [
@@ -77,8 +77,8 @@ const QUESTIONS = [
     icon: Globe,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Foreigners are often forced into massive upfront rent.',
     impact: 'CasaPay eliminates the need for 6-12 month upfront payments, opening your property to a global market.',
     options: [
@@ -93,8 +93,8 @@ const QUESTIONS = [
     icon: GraduationCap,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Students often lack credit history.',
     impact: 'Our embedded screening replaces traditional credit checks, making student default risk manageable.',
     options: [
@@ -109,8 +109,8 @@ const QUESTIONS = [
     icon: Home,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Measures inventory efficiency.',
     impact: 'High vacancy costs are often linked to friction in the deposit/onboarding flow.',
     options: [
@@ -125,8 +125,8 @@ const QUESTIONS = [
     icon: Clock,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Measures sales cycle velocity.',
     impact: 'Reducing friction with CasaPay speeds up the move-in process and reduces empty room days.',
     options: [
@@ -141,8 +141,8 @@ const QUESTIONS = [
     icon: CreditCard,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Validates current tech stack.',
     impact: 'Manual/Cash workflows are high-risk and labor-intensive; we provide a digital first-path.',
     options: [
@@ -157,8 +157,8 @@ const QUESTIONS = [
     icon: MousePointer2,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Measures conversion friction.',
     impact: 'Manual bookings are the #1 bottleneck for scaling; CasaPay enables instant, digital-first onboarding.',
     options: [
@@ -173,8 +173,8 @@ const QUESTIONS = [
     icon: Briefcase,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Determines technical maturity and integration path.',
     impact: " 'No' or '3rd party' means our @casapay.me alias logic is perfect; 'In-house' suggests a robust direct API integration opportunity.",
     options: [
@@ -189,8 +189,8 @@ const QUESTIONS = [
     icon: Wallet,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'High deposits are the #1 cause of tenant drop-off.',
     impact: 'Reducing deposits increases your conversion rate and lead flow immediately.',
     options: [
@@ -205,8 +205,8 @@ const QUESTIONS = [
     icon: TrendingDown,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Measures operational drag.',
     impact: 'We guarantee on-time payouts, removing the need for manual debt collection and follow-ups.',
     options: [
@@ -221,8 +221,8 @@ const QUESTIONS = [
     icon: AlertCircle,
     color: 'text-slate-400',
     bg: 'bg-slate-500/20',
-    activeClass: 'bg-slate-500/10 border-slate-500/50 text-slate-200',
-    dotClass: 'border-slate-400 bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-50',
+    dotClass: 'border-emerald-400 bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]',
     why: 'Direct hit to NOI (Net Operating Income).',
     impact: 'CasaPay covers the loss, ensuring your cashflow is protected even if a tenant defaults.',
     options: [
@@ -466,12 +466,16 @@ export default function SalesDeck() {
                           className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${
                             answers[q.key as keyof typeof answers] === opt.id 
                               ? q.activeClass 
-                              : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'
+                              : 'bg-white/5 border-transparent text-slate-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 hover:shadow-[0_0_15px_rgba(16,185,129,0.1)]'
                           }`}
                         >
                           <div className="flex items-center gap-2">
                             <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                            <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-slate-500/10 text-slate-400' : 'bg-white/5 text-slate-500'}`}>
+                            <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${
+                              answers[q.key as keyof typeof answers] === opt.id
+                                ? 'bg-emerald-500/20 text-emerald-400'
+                                : opt.weight > 0 ? 'bg-slate-500/10 text-slate-400' : 'bg-white/5 text-slate-500'
+                            }`}>
                               +{opt.weight}
                             </span>
                           </div>
@@ -635,7 +639,7 @@ export default function SalesDeck() {
                 ))}
              </div>
 
-             <button className="px-8 py-4 bg-white text-slate-950 rounded-2xl font-black uppercase tracking-[0.15em] hover:bg-slate-300 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-white/30">
+             <button className="px-8 py-4 bg-emerald-500 text-slate-950 rounded-2xl font-black uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-emerald-500/50">
                 Start Pilot Deployment
              </button>
           </div>
@@ -653,7 +657,7 @@ export default function SalesDeck() {
         {/* Progress Bar */}
         <div className="w-full h-1 bg-white/5 rounded-full mb-4 overflow-hidden">
           <div 
-            className="h-full bg-slate-400 transition-all duration-500 ease-out shadow-[0_0_10px_rgba(148,163,184,0.6)]" 
+            className="h-full bg-emerald-500 transition-all duration-500 ease-out shadow-[0_0_15px_rgba(16,185,129,0.6)]" 
             style={{ width: `${((currentStep + 1) / STEPS.length) * 100}%` }}
           />
         </div>
