@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "CasaPay Prospector",
-  description: "Sales Optimization & Financial Impact Analysis Tool",
+  description: "Sales Optimization & Financial Impact Analysis Tool - Auto-deploy enabled",
 };
 
 export default function RootLayout({
