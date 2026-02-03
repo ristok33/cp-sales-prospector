@@ -657,7 +657,7 @@ export default function SalesDeck() {
           />
         </div>
 
-        {/* Slide Header */}
+        {/* Step Header */}
         <div className="mb-4">
            <span className="text-blue-500 font-black text-[10px] uppercase tracking-[0.3em]">Step 0{currentSlide + 1}</span>
            <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mt-1">{SLIDES[currentSlide].title}</h2>
