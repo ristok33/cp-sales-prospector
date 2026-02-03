@@ -56,10 +56,10 @@ const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                 <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">The CasaPay Loop</span>
              </div>
              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-                Rental Cashflow <br/><span className="text-blue-400">Autopilot.</span>
+                Rental Cashflow <span className="text-blue-400">Autopilot.</span>
              </h2>
              <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
-                CasaPay is the financial engine that powers your Rental Finance Lifecycle—automating collections, securing payouts, and guaranteeing 100% cashflow stability.
+                The financial engine for your <span className="text-white">Rental Finance Lifecycle</span>—automating collections and guaranteeing 100% cashflow stability.
              </p>
           </div>
 
@@ -101,18 +101,10 @@ const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 };
 
 export default function SalesDeck() {
-  const [showIntro, setShowIntro] = useState(false);
-  
-  useEffect(() => {
-    const hasSeenIntro = localStorage.getItem('casapay-intro-seen');
-    if (!hasSeenIntro) {
-      setShowIntro(true);
-    }
-  }, []);
+  const [showIntro, setShowIntro] = useState(true);
 
   const closeIntro = () => {
     setShowIntro(false);
-    localStorage.setItem('casapay-intro-seen', 'true');
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
