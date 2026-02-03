@@ -39,6 +39,201 @@ const SLIDES = [
   { id: 'solution', title: 'Solution Value' },
 ];
 
+const QUESTIONS = [
+  {
+    key: 'portfolioSize',
+    title: 'Portfolio Size',
+    icon: LayoutGrid,
+    color: 'text-indigo-400',
+    bg: 'bg-indigo-500/20',
+    activeClass: 'bg-indigo-500/10 border-indigo-500/50 text-indigo-400',
+    dotClass: 'border-indigo-500 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]',
+    why: 'Determines total revenue opportunity and operational scale.',
+    impact: 'Larger portfolios benefit more from automated collection and batch processing.',
+    options: [
+      { id: '<100', label: '< 100 units', weight: 0 },
+      { id: '100-500', label: '100 - 500 units', weight: 5 },
+      { id: '500+', label: '500+ units', weight: 10 },
+    ]
+  },
+  {
+    key: 'contractDuration',
+    title: 'Average Contract Duration',
+    icon: Calendar,
+    color: 'text-pink-400',
+    bg: 'bg-pink-500/20',
+    activeClass: 'bg-pink-500/10 border-pink-500/50 text-pink-400',
+    dotClass: 'border-pink-500 bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.6)]',
+    why: 'Measures tenant turnover velocity.',
+    impact: 'Shorter contracts mean higher admin burden; CasaPay automates the repeat screening and setup.',
+    options: [
+      { id: '<6m', label: '< 6 months', weight: 10 },
+      { id: '6-12m', label: '6 - 12 months', weight: 5 },
+      { id: '12+m', label: '12+ months', weight: 0 },
+    ]
+  },
+  {
+    key: 'tenants',
+    title: 'Local vs Foreigner Ratio',
+    icon: Globe,
+    color: 'text-purple-400',
+    bg: 'bg-purple-500/20',
+    activeClass: 'bg-purple-500/10 border-purple-500/50 text-purple-400',
+    dotClass: 'border-purple-500 bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]',
+    why: 'Foreigners are often forced into massive upfront rent.',
+    impact: 'CasaPay eliminates the need for 6-12 month upfront payments, opening your property to a global market.',
+    options: [
+      { id: 'local', label: 'Mostly Local', weight: 0 },
+      { id: 'mixed', label: 'Balanced Mix', weight: 5 },
+      { id: 'foreigner', label: 'Foreigners', weight: 10 },
+    ]
+  },
+  {
+    key: 'type',
+    title: 'Students vs Professionals',
+    icon: GraduationCap,
+    color: 'text-emerald-400',
+    bg: 'bg-emerald-500/20',
+    activeClass: 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400',
+    dotClass: 'border-emerald-500 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]',
+    why: 'Students often lack credit history.',
+    impact: 'Our embedded screening replaces traditional credit checks, making student default risk manageable.',
+    options: [
+      { id: 'professionals', label: 'Professionals', weight: 0 },
+      { id: 'mixed', label: 'Balanced Mix', weight: 5 },
+      { id: 'students', label: 'Mostly Students', weight: 10 },
+    ]
+  },
+  {
+    key: 'occupancyRate',
+    title: 'Occupancy Rate',
+    icon: Home,
+    color: 'text-teal-400',
+    bg: 'bg-teal-500/20',
+    activeClass: 'bg-teal-500/10 border-teal-500/50 text-teal-400',
+    dotClass: 'border-teal-500 bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.6)]',
+    why: 'Measures inventory efficiency.',
+    impact: 'High vacancy costs are often linked to friction in the deposit/onboarding flow.',
+    options: [
+      { id: '<80', label: '< 80%', weight: 10 },
+      { id: '80-95', label: '80 - 95%', weight: 5 },
+      { id: '>95', label: '> 95%', weight: 0 },
+    ]
+  },
+  {
+    key: 'timeToContract',
+    title: 'Time to Contract',
+    icon: Clock,
+    color: 'text-orange-400',
+    bg: 'bg-orange-500/20',
+    activeClass: 'bg-orange-500/10 border-orange-500/50 text-orange-400',
+    dotClass: 'border-orange-500 bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]',
+    why: 'Measures sales cycle velocity.',
+    impact: 'Reducing friction with CasaPay speeds up the move-in process and reduces empty room days.',
+    options: [
+      { id: '<7', label: '< 7 days', weight: 0 },
+      { id: '7-21', label: '7 - 21 days', weight: 5 },
+      { id: '>21', label: '> 21 days', weight: 10 },
+    ]
+  },
+  {
+    key: 'payments',
+    title: 'Online Payments',
+    icon: CreditCard,
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/20',
+    activeClass: 'bg-blue-500/10 border-blue-500/50 text-blue-400',
+    dotClass: 'border-blue-500 bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]',
+    why: 'Validates current tech stack.',
+    impact: 'Manual/Cash workflows are high-risk and labor-intensive; we provide a digital first-path.',
+    options: [
+      { id: 'cash', label: 'Manual (<30%)', weight: 10 },
+      { id: 'bank', label: 'Mixed (30-70%)', weight: 5 },
+      { id: 'online', label: 'Digital (>70%)', weight: 0 },
+    ]
+  },
+  {
+    key: 'onlineBooking',
+    title: 'Online Booking Option',
+    icon: MousePointer2,
+    color: 'text-indigo-400',
+    bg: 'bg-indigo-500/20',
+    activeClass: 'bg-indigo-500/10 border-indigo-500/50 text-indigo-400',
+    dotClass: 'border-indigo-500 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]',
+    why: 'Measures conversion friction.',
+    impact: 'Manual bookings are the #1 bottleneck for scaling; CasaPay enables instant, digital-first onboarding.',
+    options: [
+      { id: 'no', label: 'No', weight: 10 },
+      { id: 'semi', label: 'Semi-automated', weight: 5 },
+      { id: 'fully', label: 'Fully automated', weight: 0 },
+    ]
+  },
+  {
+    key: 'pms',
+    title: 'PMS',
+    icon: Briefcase,
+    color: 'text-purple-400',
+    bg: 'bg-purple-500/20',
+    activeClass: 'bg-purple-500/10 border-purple-500/50 text-purple-400',
+    dotClass: 'border-purple-500 bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]',
+    why: 'Determines technical maturity and integration path.',
+    impact: " 'No' or '3rd party' means our @casapay.me alias logic is perfect; 'In-house' suggests a robust direct API integration opportunity.",
+    options: [
+      { id: 'no', label: 'No', weight: 10 },
+      { id: '3rd-party', label: '3rd party', weight: 10 },
+      { id: 'in-house', label: 'In-house', weight: 15 },
+    ]
+  },
+  {
+    key: 'securityDeposit',
+    title: 'Average Security Deposit / Upfront Rent',
+    icon: Wallet,
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/20',
+    activeClass: 'bg-blue-500/10 border-blue-500/50 text-blue-400',
+    dotClass: 'border-blue-500 bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]',
+    why: 'High deposits are the #1 cause of tenant drop-off.',
+    impact: 'Reducing deposits increases your conversion rate and lead flow immediately.',
+    options: [
+      { id: 'low', label: '0 - 1 Month', weight: 10 },
+      { id: 'medium', label: '2 - 3 Months', weight: 5 },
+      { id: 'high', label: '4+ Months', weight: 0 },
+    ]
+  },
+  {
+    key: 'latePayers',
+    title: 'Late Payers %',
+    icon: TrendingDown,
+    color: 'text-amber-400',
+    bg: 'bg-amber-500/20',
+    activeClass: 'bg-amber-500/10 border-amber-500/50 text-amber-400',
+    dotClass: 'border-amber-500 bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]',
+    why: 'Measures operational drag.',
+    impact: 'We guarantee on-time payouts, removing the need for manual debt collection and follow-ups.',
+    options: [
+      { id: 'low', label: '< 5% (Low)', weight: 0 },
+      { id: 'medium', label: '5 - 15% (Mod)', weight: 5 },
+      { id: 'high', label: '> 15% (High)', weight: 10 },
+    ]
+  },
+  {
+    key: 'defaultRate',
+    title: 'Default %',
+    icon: AlertCircle,
+    color: 'text-red-400',
+    bg: 'bg-red-500/20',
+    activeClass: 'bg-red-500/10 border-red-500/50 text-red-400',
+    dotClass: 'border-red-500 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]',
+    why: 'Direct hit to NOI (Net Operating Income).',
+    impact: 'CasaPay covers the loss, ensuring your cashflow is protected even if a tenant defaults.',
+    options: [
+      { id: 'low', label: '< 1% (Low)', weight: 0 },
+      { id: 'medium', label: '1 - 3% (Mod)', weight: 5 },
+      { id: 'high', label: '> 3% (High)', weight: 10 },
+    ]
+  }
+];
+
 const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   if (!isOpen) return null;
 
@@ -104,20 +299,28 @@ export default function SalesDeck() {
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({
-    payments: 'bank',
-    tenants: 'mixed',
-    type: 'mixed',
-    securityDeposit: 'medium',
-    latePayers: 'medium',
-    defaultRate: 'medium',
-    portfolioSize: '100-500',
-    contractDuration: '6-12m',
-    occupancyRate: '80-95',
-    timeToContract: '7-21',
-    onlineBooking: 'no',
-    pms: 'no'
+    payments: '',
+    tenants: '',
+    type: '',
+    securityDeposit: '',
+    latePayers: '',
+    defaultRate: '',
+    portfolioSize: '',
+    contractDuration: '',
+    occupancyRate: '',
+    timeToContract: '',
+    onlineBooking: '',
+    pms: ''
   });
+
+  const handleAnswer = (key: string, value: string, index: number) => {
+    setAnswers(prev => ({ ...prev, [key]: value }));
+    if (index === activeQuestionIndex) {
+      setActiveQuestionIndex(prev => Math.min(prev + 1, 11));
+    }
+  };
 
   const nextSlide = () => setCurrentSlide(prev => Math.min(prev + 1, SLIDES.length - 1));
   const prevSlide = () => setCurrentSlide(prev => Math.max(prev - 1, 0));
@@ -227,491 +430,69 @@ export default function SalesDeck() {
 
             {/* Questions Grid */}
             <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1.5">
-              {/* Question 1: Portfolio Size */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-indigo-500/20 rounded-lg text-indigo-400">
-                      <LayoutGrid size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Portfolio Size</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Determines total revenue opportunity and operational scale." 
-                    impact="Larger portfolios benefit more from automated collection and batch processing." 
-                    position="bottom"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: '<100', label: '< 100 units', weight: 0 },
-                    { id: '100-500', label: '100 - 500 units', weight: 5 },
-                    { id: '500+', label: '500+ units', weight: 10 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.portfolioSize === opt.id ? 'bg-indigo-500/10 border-indigo-500/50 text-indigo-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="portfolioSize" 
-                        className="hidden" 
-                        checked={answers.portfolioSize === opt.id} 
-                        onChange={() => setAnswers({...answers, portfolioSize: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.portfolioSize === opt.id ? 'border-indigo-500 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
+              {QUESTIONS.map((q, i) => {
+                const isVisible = i <= activeQuestionIndex;
+                const Icon = q.icon;
 
-              {/* Question 2: Average Contract Duration */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-pink-500/20 rounded-lg text-pink-400">
-                      <Calendar size={16} />
+                if (!isVisible) {
+                  return (
+                    <div key={q.key} className="glass-card p-2 rounded-xl border border-white/5 bg-white/[0.01] h-[163px] flex items-center justify-center transition-all duration-500">
+                       <div className="w-8 h-8 rounded-full border border-white/5 flex items-center justify-center">
+                          <span className="text-[10px] font-black text-slate-800">{i + 1}</span>
+                       </div>
                     </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Average Contract Duration</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Measures tenant turnover velocity." 
-                    impact="Shorter contracts mean higher admin burden; CasaPay automates the repeat screening and setup." 
-                    position="bottom"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: '<6m', label: '< 6 months', weight: 10 },
-                    { id: '6-12m', label: '6 - 12 months', weight: 5 },
-                    { id: '12+m', label: '12+ months', weight: 0 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.contractDuration === opt.id ? 'bg-pink-500/10 border-pink-500/50 text-pink-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="contractDuration" 
-                        className="hidden" 
-                        checked={answers.contractDuration === opt.id} 
-                        onChange={() => setAnswers({...answers, contractDuration: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.contractDuration === opt.id ? 'border-pink-500 bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
+                  );
+                }
 
-              {/* Question 3: Local vs Foreigner Ratio */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-purple-500/20 rounded-lg text-purple-400">
-                      <Globe size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Local vs Foreigner Ratio</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Foreigners are often forced into massive upfront rent." 
-                    impact="CasaPay eliminates the need for 6-12 month upfront payments, opening your property to a global market." 
-                    position="bottom"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'local', label: 'Mostly Local', weight: 0 },
-                    { id: 'mixed', label: 'Balanced Mix', weight: 5 },
-                    { id: 'foreigner', label: 'Foreigners', weight: 10 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.tenants === opt.id ? 'bg-purple-500/10 border-purple-500/50 text-purple-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
+                return (
+                  <div key={q.key} className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all animate-in zoom-in duration-500">
+                    <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
+                        <div className={`p-1.5 ${q.bg} rounded-lg ${q.color}`}>
+                          <Icon size={16} />
+                        </div>
+                        <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">{q.title}</h3>
                       </div>
-                      <input 
-                        type="radio" 
-                        name="tenants" 
-                        className="hidden" 
-                        checked={answers.tenants === opt.id} 
-                        onChange={() => setAnswers({...answers, tenants: opt.id})}
+                      <QuestionTooltip 
+                        why={q.why} 
+                        impact={q.impact} 
+                        position={i < 6 ? 'bottom' : 'top'}
                       />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.tenants === opt.id ? 'border-purple-500 bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 4: Students vs Professionals */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-emerald-500/20 rounded-lg text-emerald-400">
-                      <GraduationCap size={16} />
                     </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Students vs Professionals</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Students often lack credit history." 
-                    impact="Our embedded screening replaces traditional credit checks, making student default risk manageable." 
-                    position="bottom"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'professionals', label: 'Professionals', weight: 0 },
-                    { id: 'mixed', label: 'Balanced Mix', weight: 5 },
-                    { id: 'students', label: 'Mostly Students', weight: 10 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.type === opt.id ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="type" 
-                        className="hidden" 
-                        checked={answers.type === opt.id} 
-                        onChange={() => setAnswers({...answers, type: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.type === opt.id ? 'border-emerald-500 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 5: Occupancy Rate */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-teal-500/20 rounded-lg text-teal-400">
-                      <Home size={16} />
+                    <div className="space-y-1.5">
+                      {q.options.map(opt => (
+                        <label 
+                          key={opt.id} 
+                          className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${
+                            answers[q.key as keyof typeof answers] === opt.id 
+                              ? q.activeClass 
+                              : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
+                            <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
+                              +{opt.weight}
+                            </span>
+                          </div>
+                          <input 
+                            type="radio" 
+                            name={q.key} 
+                            className="hidden" 
+                            checked={answers[q.key as keyof typeof answers] === opt.id} 
+                            onChange={() => handleAnswer(q.key, opt.id, i)}
+                          />
+                          <div className={`w-3 h-3 rounded-full border-2 ${
+                            answers[q.key as keyof typeof answers] === opt.id 
+                              ? q.dotClass 
+                              : 'border-slate-600'
+                          }`} />
+                        </label>
+                      ))}
                     </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Occupancy Rate</h3>
                   </div>
-                  <QuestionTooltip 
-                    why="Measures inventory efficiency." 
-                    impact="High vacancy costs are often linked to friction in the deposit/onboarding flow." 
-                    position="bottom"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: '<80', label: '< 80%', weight: 10 },
-                    { id: '80-95', label: '80 - 95%', weight: 5 },
-                    { id: '>95', label: '> 95%', weight: 0 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.occupancyRate === opt.id ? 'bg-teal-500/10 border-teal-500/50 text-teal-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="occupancyRate" 
-                        className="hidden" 
-                        checked={answers.occupancyRate === opt.id} 
-                        onChange={() => setAnswers({...answers, occupancyRate: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.occupancyRate === opt.id ? 'border-teal-500 bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 6: Time to Contract */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-orange-500/20 rounded-lg text-orange-400">
-                      <Clock size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Time to Contract</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Measures sales cycle velocity." 
-                    impact="Reducing friction with CasaPay speeds up the move-in process and reduces empty room days." 
-                    position="bottom"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: '<7', label: '< 7 days', weight: 0 },
-                    { id: '7-21', label: '7 - 21 days', weight: 5 },
-                    { id: '>21', label: '> 21 days', weight: 10 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.timeToContract === opt.id ? 'bg-orange-500/10 border-orange-500/50 text-orange-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="timeToContract" 
-                        className="hidden" 
-                        checked={answers.timeToContract === opt.id} 
-                        onChange={() => setAnswers({...answers, timeToContract: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.timeToContract === opt.id ? 'border-orange-500 bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 7: Online Payments */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-blue-500/20 rounded-lg text-blue-400">
-                      <CreditCard size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Online Payments</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Validates current tech stack." 
-                    impact="Manual/Cash workflows are high-risk and labor-intensive; we provide a digital first-path." 
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'cash', label: 'Manual (<30%)', weight: 10 },
-                    { id: 'bank', label: 'Mixed (30-70%)', weight: 5 },
-                    { id: 'online', label: 'Digital (>70%)', weight: 0 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.payments === opt.id ? 'bg-blue-500/10 border-blue-500/50 text-blue-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="payments" 
-                        className="hidden" 
-                        checked={answers.payments === opt.id} 
-                        onChange={() => setAnswers({...answers, payments: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.payments === opt.id ? 'border-blue-500 bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 8: Online Booking Option */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-indigo-500/20 rounded-lg text-indigo-400">
-                      <MousePointer2 size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Online Booking Option</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Measures conversion friction." 
-                    impact="Manual bookings are the #1 bottleneck for scaling; CasaPay enables instant, digital-first onboarding." 
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'no', label: 'No', weight: 10 },
-                    { id: 'semi', label: 'Semi-automated', weight: 5 },
-                    { id: 'fully', label: 'Fully automated', weight: 0 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.onlineBooking === opt.id ? 'bg-indigo-500/10 border-indigo-500/50 text-indigo-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="onlineBooking" 
-                        className="hidden" 
-                        checked={answers.onlineBooking === opt.id} 
-                        onChange={() => setAnswers({...answers, onlineBooking: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.onlineBooking === opt.id ? 'border-indigo-500 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 9: PMS */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-purple-500/20 rounded-lg text-purple-400">
-                      <Briefcase size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">PMS</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Determines technical maturity and integration path." 
-                    impact=" 'No' or '3rd party' means our @casapay.me alias logic is perfect; 'In-house' suggests a robust direct API integration opportunity." 
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'no', label: 'No', weight: 10 },
-                    { id: '3rd-party', label: '3rd party', weight: 10 },
-                    { id: 'in-house', label: 'In-house', weight: 15 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.pms === opt.id ? 'bg-purple-500/10 border-purple-500/50 text-purple-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="pms" 
-                        className="hidden" 
-                        checked={answers.pms === opt.id} 
-                        onChange={() => setAnswers({...answers, pms: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.pms === opt.id ? 'border-purple-500 bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 10: Average Security Deposit / Upfront Rent */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-blue-500/20 rounded-lg text-blue-400">
-                      <Wallet size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Average Security Deposit / Upfront Rent</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="High deposits are the #1 cause of tenant drop-off." 
-                    impact="Reducing deposits increases your conversion rate and lead flow immediately." 
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'low', label: '0 - 1 Month', weight: 10 },
-                    { id: 'medium', label: '2 - 3 Months', weight: 5 },
-                    { id: 'high', label: '4+ Months', weight: 0 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.securityDeposit === opt.id ? 'bg-blue-500/10 border-blue-500/50 text-blue-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="securityDeposit" 
-                        className="hidden" 
-                        checked={answers.securityDeposit === opt.id} 
-                        onChange={() => setAnswers({...answers, securityDeposit: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.securityDeposit === opt.id ? 'border-blue-500 bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 11: Late Payers % */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-amber-500/20 rounded-lg text-amber-400">
-                      <TrendingDown size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Late Payers %</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Measures operational drag." 
-                    impact="We guarantee on-time payouts, removing the need for manual debt collection and follow-ups." 
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'low', label: '< 5% (Low)', weight: 0 },
-                    { id: 'medium', label: '5 - 15% (Mod)', weight: 5 },
-                    { id: 'high', label: '> 15% (High)', weight: 10 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.latePayers === opt.id ? 'bg-amber-500/10 border-amber-500/50 text-amber-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="latePayers" 
-                        className="hidden" 
-                        checked={answers.latePayers === opt.id} 
-                        onChange={() => setAnswers({...answers, latePayers: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.latePayers === opt.id ? 'border-amber-500 bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question 12: Default % */}
-              <div className="glass-card p-2 rounded-xl border border-white/10 bg-white/5 relative hover:z-[100] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-red-500/20 rounded-lg text-red-400">
-                      <AlertCircle size={16} />
-                    </div>
-                    <h3 className="text-xs font-black text-slate-200 uppercase tracking-tight">Default %</h3>
-                  </div>
-                  <QuestionTooltip 
-                    why="Direct hit to NOI (Net Operating Income)." 
-                    impact="CasaPay covers the loss, ensuring your cashflow is protected even if a tenant defaults." 
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  {[
-                    { id: 'low', label: '< 1% (Low)', weight: 0 },
-                    { id: 'medium', label: '1 - 3% (Mod)', weight: 5 },
-                    { id: 'high', label: '> 3% (High)', weight: 10 },
-                  ].map(opt => (
-                    <label key={opt.id} className={`flex items-center justify-between p-2 rounded-lg border transition-all cursor-pointer ${answers.defaultRate === opt.id ? 'bg-red-500/10 border-red-500/50 text-red-400' : 'bg-white/5 border-transparent text-slate-400 hover:border-white/10'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold leading-tight">{opt.label}</span>
-                        <span className={`text-[8px] font-black px-1 py-0.5 rounded-md ${opt.weight > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-white/5 text-slate-500'}`}>
-                          +{opt.weight}
-                        </span>
-                      </div>
-                      <input 
-                        type="radio" 
-                        name="defaultRate" 
-                        className="hidden" 
-                        checked={answers.defaultRate === opt.id} 
-                        onChange={() => setAnswers({...answers, defaultRate: opt.id})}
-                      />
-                      <div className={`w-3 h-3 rounded-full border-2 ${answers.defaultRate === opt.id ? 'border-red-500 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'border-slate-600'}`} />
-                    </label>
-                  ))}
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         );
