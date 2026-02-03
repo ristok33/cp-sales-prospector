@@ -1,13 +1,13 @@
 "use client";
 
 import * as React from 'react';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { 
   ChevronRight, ChevronLeft, BarChart3, ShieldCheck, 
   AlertCircle, TrendingDown, Wallet, Users2, 
   CreditCard, GraduationCap, Briefcase, Globe,
   Zap, LayoutGrid, Calendar, Info,
-  Home, Clock, MousePointer2
+  Home, Clock, MousePointer2, UserCheck
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -39,7 +39,82 @@ const SLIDES = [
   { id: 'solution', title: 'Solution Value' },
 ];
 
+const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-300">
+      <div className="max-w-4xl w-full glass-card rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden border-white/20 shadow-2xl">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 blur-[100px] -mr-48 -mt-48 rounded-full" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 blur-[100px] -ml-48 -mb-48 rounded-full" />
+        
+        <div className="relative z-10 flex flex-col items-center text-center space-y-8">
+          <div className="space-y-3">
+             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 mb-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">The CasaPay Loop</span>
+             </div>
+             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+                Complete Rental Lifecycle <br/><span className="text-blue-400">Automated & Guaranteed.</span>
+             </h2>
+             <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
+                CasaPay closes the loop between tenant vetting, automated collections, and global debt recovery—with 100% payout guarantee.
+             </p>
+          </div>
+
+          {/* Loop Visualization */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 w-full relative">
+             {/* Connector Lines (Desktop) */}
+             <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-8" />
+             
+             {[
+               { step: 1, title: 'Vetting', icon: UserCheck, desc: 'Tenant acquisition & risk assessment', color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
+               { step: 2, title: 'Collections', icon: CreditCard, desc: 'Automated rent & deposit payments', color: 'text-blue-400', bg: 'bg-blue-500/10' },
+               { step: 3, title: 'Guarantee', icon: ShieldCheck, desc: 'Proactive 100% payment security', color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
+               { step: 4, title: 'Recovery', icon: Globe, desc: 'Global debt collection & legal', color: 'text-purple-400', bg: 'bg-purple-500/10' },
+             ].map((item, i) => (
+               <div key={i} className="relative group p-6 rounded-3xl bg-white/5 border border-white/5 hover:border-white/10 transition-all duration-500 hover:-translate-y-1">
+                  <div className={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/5 group-hover:scale-110 transition-transform duration-500`}>
+                     <item.icon size={28} />
+                  </div>
+                  <div className="space-y-1">
+                     <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">Step 0{item.step}</p>
+                     <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                     <p className="text-[11px] text-slate-400 leading-relaxed font-medium">{item.desc}</p>
+                  </div>
+               </div>
+             ))}
+          </div>
+
+          <button 
+            onClick={onClose}
+            className="group relative px-10 py-5 bg-white text-slate-950 rounded-2xl font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)] hover:shadow-white/30"
+          >
+            Start Diagnostic
+            <div className="absolute inset-0 rounded-2xl bg-white blur-lg opacity-0 group-hover:opacity-20 transition-opacity" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function SalesDeck() {
+  const [showIntro, setShowIntro] = useState(false);
+  
+  useEffect(() => {
+    const hasSeenIntro = localStorage.getItem('casapay-intro-seen');
+    if (!hasSeenIntro) {
+      setShowIntro(true);
+    }
+  }, []);
+
+  const closeIntro = () => {
+    setShowIntro(false);
+    localStorage.setItem('casapay-intro-seen', 'true');
+  };
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [answers, setAnswers] = useState({
     payments: 'bank',
@@ -803,6 +878,7 @@ export default function SalesDeck() {
 
   return (
     <div className="min-h-screen bg-[#0F172A] text-slate-200 font-sans antialiased overflow-hidden selection:bg-blue-500/30 flex flex-col">
+      <IntroModal isOpen={showIntro} onClose={closeIntro} />
       {/* Navigation */}
       <nav className="h-12 border-b border-white/10 bg-[#0F172A]/80 backdrop-blur-xl flex items-center justify-between px-6 md:px-8 shrink-0 z-40">
         <div className="flex items-center gap-6">
