@@ -51,10 +51,6 @@ const IntroModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
           <div className="space-y-3">
-             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 mb-2">
-                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">The CasaPay Loop</span>
-             </div>
              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
                 Rental Cashflow <span className="text-blue-400">Autopilot.</span>
              </h2>
