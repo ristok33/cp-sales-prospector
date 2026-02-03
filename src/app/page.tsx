@@ -659,7 +659,7 @@ export default function SalesDeck() {
 
         {/* Slide Header */}
         <div className="mb-4">
-           <span className="text-blue-500 font-black text-[10px] uppercase tracking-[0.3em]">Slide 0{currentSlide + 1}</span>
+           <span className="text-blue-500 font-black text-[10px] uppercase tracking-[0.3em]">Step 0{currentSlide + 1}</span>
            <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mt-1">{SLIDES[currentSlide].title}</h2>
         </div>
 
@@ -699,7 +699,7 @@ export default function SalesDeck() {
                  : 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/20'
              }`}
            >
-              {currentSlide === SLIDES.length - 1 ? 'End of Deck' : 'Next Slide'}
+              {currentSlide === SLIDES.length - 1 ? 'End of Deck' : 'Next Step'}
               <ChevronRight size={16} />
            </button>
         </div>
