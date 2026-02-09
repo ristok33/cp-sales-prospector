@@ -13,8 +13,8 @@ interface SidebarProps {
 
 const TOOLS: { id: ToolId; label: string; icon: typeof Users2 }[] = [
   { id: 'prospect', label: 'Prospect Qualifier', icon: Users2 },
-  { id: 'calculator', label: 'Sales Calculator', icon: BarChart3 },
   { id: 'unit-economics', label: 'Unit Economics', icon: PieChart },
+  { id: 'calculator', label: 'Sales Calculator', icon: BarChart3 },
 ];
 
 export default function Sidebar({ currentTool, onSelectTool, expanded, onToggle }: SidebarProps) {

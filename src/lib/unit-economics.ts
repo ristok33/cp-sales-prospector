@@ -94,3 +94,24 @@ export function formatCurrency(val: number): string {
 export function formatCurrencyK(val: number): string {
   return '\u00A3' + (val / 1000).toFixed(0) + 'k';
 }
+
+export interface PerTenantRevenue {
+  tpvRate: number;              // combined TPV-based rate (decimal, e.g. 0.035)
+  fixedPerTenant: number;       // tenantSub + lateFee
+  revenuePerTenant: number;     // total monthly revenue per tenant
+  commissionPerTenant: number;  // salesperson's cut per tenant
+}
+
+export function calculateRevenuePerTenant(
+  avgRent: number,
+  commissionRate: number = UNIT_ECON_DEFAULTS.salesCommissionRate,
+): PerTenantRevenue {
+  const d = UNIT_ECON_DEFAULTS;
+  const tpvRate = d.opTakeRate / 100
+    + (d.cardUsage / 100) * (d.cardTopUpRate / 100)
+    + (d.payIn2Usage / 100) * (d.payIn2Rate / 100);
+  const fixedPerTenant = d.tenantSub + d.lateFee;
+  const revenuePerTenant = avgRent * tpvRate + fixedPerTenant;
+  const commissionPerTenant = revenuePerTenant * (commissionRate / 100);
+  return { tpvRate, fixedPerTenant, revenuePerTenant, commissionPerTenant };
+}
