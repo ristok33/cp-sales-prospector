@@ -113,10 +113,10 @@ const GLOSSARY = [
 export default function SalesTargetCalculator() {
   const [avgRent, setAvgRent] = useState(1000);
   const [commissionRate, setCommissionRate] = useState(UNIT_ECON_DEFAULTS.salesCommissionRate);
-  const [fixedMonths, setFixedMonths] = useState<number | null>(12); // null = dynamic
+  const [fixedMonths, setFixedMonths] = useState<number | null>(null); // null = dynamic
   const [rampMonths, setRampMonths] = useState(3);
   const [targetCommission, setTargetCommission] = useState(10_000);
-  const [tenantsPerOperator, setTenantsPerOperator] = useState(50);
+  const [tenantsPerOperator, setTenantsPerOperator] = useState(500);
   const [monthlyConversion, setMonthlyConversion] = useState(20);
   const [existingPortfolio, setExistingPortfolio] = useState(false);
   const [dynamicOpsPerMonth, setDynamicOpsPerMonth] = useState(5);
@@ -274,7 +274,7 @@ export default function SalesTargetCalculator() {
                   <span className="text-sm font-black text-white">{rampMonths === 0 ? 'None' : `${rampMonths}mo`}</span>
                 </div>
                 <input type="range" min={0} max={12} step={1} value={rampMonths} onChange={(e) => setRampMonths(Number(e.target.value))} className="w-full accent-emerald-500" />
-                <p className="text-[8px] text-slate-600 font-medium">To full velocity</p>
+                <p className="text-[8px] text-slate-600 font-medium">{rampMonths === 0 ? 'Full velocity from month 1' : `Linear ramp: Mo1 = ${Math.round(100 / rampMonths)}% → Mo${rampMonths} = 100% of peak rate`}</p>
               </div>
 
               {/* Timeline */}
