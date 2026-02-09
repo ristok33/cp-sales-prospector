@@ -179,7 +179,9 @@ export default function UnitEconomics() {
                         Revenue
                       </td>
                     )}
-                    <td className="p-3 lg:p-2 text-slate-300 font-medium">{p.label}</td>
+                    <td className="p-3 lg:p-2 text-slate-300 font-medium">
+                      {p.label} <span className="text-[10px] text-slate-500 font-normal">({getFormula(p)})</span>
+                    </td>
                     <td className="p-3 lg:p-2 text-center">
                       <div className="inline-flex items-center gap-1">
                         <input
@@ -217,7 +219,9 @@ export default function UnitEconomics() {
                         COGS
                       </td>
                     )}
-                    <td className="p-3 lg:p-2 text-slate-300 font-medium">{p.label}</td>
+                    <td className="p-3 lg:p-2 text-slate-300 font-medium">
+                      {p.label} <span className="text-[10px] text-slate-500 font-normal">({getFormula(p)})</span>
+                    </td>
                     <td className="p-3 lg:p-2 text-center">
                       <div className="inline-flex items-center gap-1">
                         <input
