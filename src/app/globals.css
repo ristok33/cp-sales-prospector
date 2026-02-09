@@ -3,10 +3,10 @@
 @theme {
   --color-background: #0F172A;
   --color-foreground: #F9FAFB;
-  
+
   --radius-3xl: 24px;
   --radius-4xl: 32px;
-  
+
   --animate-spin-slow: spin 3s linear infinite;
 }
 
@@ -34,11 +34,55 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .glass-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
     border: 1.5px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 40px -6px rgba(0, 0, 0, 0.5);
   }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInFromRight {
+  from { transform: translateX(20px); }
+  to { transform: translateX(0); }
+}
+@keyframes slideInFromBottom {
+  from { transform: translateY(20px); }
+  to { transform: translateY(0); }
+}
+@keyframes slideInFromTop {
+  from { transform: translateY(-20px); }
+  to { transform: translateY(0); }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-in { animation-fill-mode: both; }
+.fade-in { animation-name: fadeIn; }
+.slide-in-from-right-4 { animation-name: slideInFromRight; }
+.slide-in-from-bottom-4 { animation-name: slideInFromBottom; }
+.slide-in-from-top-4 { animation-name: slideInFromTop; }
+.zoom-in { animation-name: zoomIn; }
+
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.1); }
+
+/* Remove number input spinners */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-spinner {
+  -moz-appearance: textfield;
 }
