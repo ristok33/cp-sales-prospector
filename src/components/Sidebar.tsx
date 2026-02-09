@@ -1,6 +1,6 @@
 "use client";
 
-import { Users2, BarChart3, Wallet, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Users2, BarChart3, PieChart, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export type ToolId = 'prospect' | 'calculator' | 'unit-economics';
 
@@ -14,7 +14,7 @@ interface SidebarProps {
 const TOOLS: { id: ToolId; label: string; icon: typeof Users2 }[] = [
   { id: 'prospect', label: 'Prospect Qualifier', icon: Users2 },
   { id: 'calculator', label: 'Sales Calculator', icon: BarChart3 },
-  { id: 'unit-economics', label: 'Unit Economics', icon: Wallet },
+  { id: 'unit-economics', label: 'Unit Economics', icon: PieChart },
 ];
 
 export default function Sidebar({ currentTool, onSelectTool, expanded, onToggle }: SidebarProps) {

@@ -127,132 +127,136 @@ export default function UnitEconomics() {
   };
 
   return (
-    <div className="min-h-screen text-slate-200 font-sans antialiased flex flex-col p-4 md:p-8">
-      <div className="max-w-6xl mx-auto w-full space-y-8">
+    <div className="text-slate-200 font-sans antialiased flex flex-col p-4 md:p-6">
+      <div className="max-w-6xl mx-auto w-full space-y-5">
         {/* Header */}
-        <div className="space-y-2">
-          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-            CasaPay Unit Economics
-          </h1>
-          <p className="text-sm text-slate-400 font-medium">
+        <div>
+          <h1 className="text-2xl font-black text-white tracking-tight">Unit Economics</h1>
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             Per 1,000 Tenants @ £1,000/mo avg rent &nbsp;|&nbsp; TPV: £1M/mo
           </p>
         </div>
 
-        {/* Sankey Chart */}
-        <div className="glass-card p-6 rounded-2xl border border-white/10">
-          <h3 className="text-sm font-black text-white uppercase tracking-tight mb-4">Revenue Flow</h3>
-          <Chart
-            chartType="Sankey"
-            width="100%"
-            height="400px"
-            data={sankeyData}
-            options={sankeyOptions}
-            loader={
-              <div className="h-[400px] flex items-center justify-center">
-                <div className="text-slate-500 text-sm font-medium">Loading chart...</div>
-              </div>
-            }
-          />
-        </div>
+        {/* Two-column on desktop, stacked on mobile */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {/* Sankey Chart */}
+          <div className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col">
+            <h3 className="text-sm font-black text-white uppercase tracking-tight mb-4">Revenue Flow</h3>
+            <div className="flex-1 min-h-[400px]">
+              <Chart
+                chartType="Sankey"
+                width="100%"
+                height="100%"
+                data={sankeyData}
+                options={sankeyOptions}
+                loader={
+                  <div className="h-full flex items-center justify-center">
+                    <div className="text-slate-500 text-sm font-medium">Loading chart...</div>
+                  </div>
+                }
+              />
+            </div>
+          </div>
 
-        {/* Table */}
-        <div className="glass-card rounded-2xl border border-white/10 overflow-hidden">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-white/5">
-                <th className="text-left p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest w-20">Type</th>
-                <th className="text-left p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest">Line Item</th>
-                <th className="text-center p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest w-28">Input</th>
-                <th className="text-right p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest">Formula</th>
-                <th className="text-right p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest w-28">Result</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Revenue rows */}
-              {revenueParams.map((p, i) => (
-                <tr key={p.key} className="border-b border-white/5 bg-emerald-500/[0.03] hover:bg-emerald-500/[0.06] transition-colors">
-                  {i === 0 && (
-                    <td rowSpan={revenueParams.length} className="p-3 text-xs font-black text-emerald-500/60 uppercase tracking-widest align-top">
-                      Revenue
-                    </td>
-                  )}
-                  <td className="p-3 text-slate-300 font-medium">{p.label}</td>
-                  <td className="p-3 text-center">
-                    <div className="inline-flex items-center gap-1">
-                      <input
-                        type="number"
-                        value={inputs[p.key]}
-                        min={p.min}
-                        max={p.max}
-                        step={p.step}
-                        onChange={(e) => updateParam(p.key, parseFloat(e.target.value) || 0)}
-                        className="w-16 bg-slate-900/80 text-emerald-400 border border-white/10 rounded-lg px-2 py-1 text-center text-xs font-bold focus:outline-none focus:border-emerald-500/50 no-spinner"
-                      />
-                      <span className="text-[10px] text-slate-500 font-bold">{p.suffix}</span>
-                    </div>
-                  </td>
-                  <td className="p-3 text-right text-[11px] text-slate-500 font-medium">{getFormula(p)}</td>
-                  <td className="p-3 text-right font-bold text-white">{formatCurrency(getResult(p))}</td>
+          {/* Table */}
+          <div className="glass-card rounded-2xl border border-white/10 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-white/5">
+                  <th className="text-left p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest w-20 lg:w-14">Type</th>
+                  <th className="text-left p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest">Line Item</th>
+                  <th className="text-center p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest w-28 lg:w-20">Input</th>
+                  <th className="text-right p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest lg:hidden">Formula</th>
+                  <th className="text-right p-3 text-[10px] font-black text-slate-500 uppercase tracking-widest w-28 lg:w-20">Result</th>
                 </tr>
-              ))}
-
-              {/* Revenue total */}
-              <tr className="border-b-2 border-emerald-500/20 bg-emerald-500/[0.06]">
-                <td colSpan={3} className="p-3 font-black text-slate-400 text-xs uppercase tracking-widest">Total Revenue</td>
-                <td className="p-3"></td>
-                <td className="p-3 text-right font-black text-white text-base">{formatCurrency(results.totalRevenue)}</td>
-              </tr>
-
-              {/* Spacer */}
-              <tr><td colSpan={5} className="p-1"></td></tr>
-
-              {/* COGS rows */}
-              {cogsParams.map((p, i) => (
-                <tr key={p.key} className="border-b border-white/5 bg-red-500/[0.03] hover:bg-red-500/[0.06] transition-colors">
-                  {i === 0 && (
-                    <td rowSpan={cogsParams.length} className="p-3 text-xs font-black text-red-500/60 uppercase tracking-widest align-top">
-                      COGS
+              </thead>
+              <tbody>
+                {/* Revenue rows */}
+                {revenueParams.map((p, i) => (
+                  <tr key={p.key} className="border-b border-white/5 bg-emerald-500/[0.03] hover:bg-emerald-500/[0.06] transition-colors">
+                    {i === 0 && (
+                      <td rowSpan={revenueParams.length} className="p-3 lg:p-2 text-xs font-black text-emerald-500/60 uppercase tracking-widest align-top">
+                        Revenue
+                      </td>
+                    )}
+                    <td className="p-3 lg:p-2 text-slate-300 font-medium">{p.label}</td>
+                    <td className="p-3 lg:p-2 text-center">
+                      <div className="inline-flex items-center gap-1">
+                        <input
+                          type="number"
+                          value={inputs[p.key]}
+                          min={p.min}
+                          max={p.max}
+                          step={p.step}
+                          onChange={(e) => updateParam(p.key, parseFloat(e.target.value) || 0)}
+                          className="w-16 lg:w-14 bg-slate-900/80 text-emerald-400 border border-white/10 rounded-lg px-2 py-1 text-center text-xs font-bold focus:outline-none focus:border-emerald-500/50 no-spinner"
+                        />
+                        <span className="text-[10px] text-slate-500 font-bold">{p.suffix}</span>
+                      </div>
                     </td>
-                  )}
-                  <td className="p-3 text-slate-300 font-medium">{p.label}</td>
-                  <td className="p-3 text-center">
-                    <div className="inline-flex items-center gap-1">
-                      <input
-                        type="number"
-                        value={inputs[p.key]}
-                        min={p.min}
-                        max={p.max}
-                        step={p.step}
-                        onChange={(e) => updateParam(p.key, parseFloat(e.target.value) || 0)}
-                        className="w-16 bg-slate-900/80 text-red-400 border border-white/10 rounded-lg px-2 py-1 text-center text-xs font-bold focus:outline-none focus:border-red-500/50 no-spinner"
-                      />
-                      <span className="text-[10px] text-slate-500 font-bold">{p.suffix}</span>
-                    </div>
-                  </td>
-                  <td className="p-3 text-right text-[11px] text-slate-500 font-medium">{getFormula(p)}</td>
-                  <td className="p-3 text-right font-bold text-red-400">-{formatCurrency(getResult(p))}</td>
+                    <td className="p-3 text-right text-[11px] text-slate-500 font-medium lg:hidden">{getFormula(p)}</td>
+                    <td className="p-3 lg:p-2 text-right font-bold text-white">{formatCurrency(getResult(p))}</td>
+                  </tr>
+                ))}
+
+                {/* Revenue total */}
+                <tr className="border-b-2 border-emerald-500/20 bg-emerald-500/[0.06]">
+                  <td colSpan={3} className="p-3 lg:p-2 font-black text-slate-400 text-xs uppercase tracking-widest">Total Revenue</td>
+                  <td className="p-3 lg:hidden"></td>
+                  <td className="p-3 lg:p-2 text-right font-black text-white text-base">{formatCurrency(results.totalRevenue)}</td>
                 </tr>
-              ))}
 
-              {/* COGS total */}
-              <tr className="border-b-2 border-red-500/20 bg-red-500/[0.06]">
-                <td colSpan={3} className="p-3 font-black text-red-400 text-xs uppercase tracking-widest">Total COGS</td>
-                <td className="p-3"></td>
-                <td className="p-3 text-right font-black text-red-400 text-base">-{formatCurrency(results.totalCogs)}</td>
-              </tr>
+                {/* Spacer */}
+                <tr><td colSpan={5} className="p-1"></td></tr>
 
-              {/* Spacer */}
-              <tr><td colSpan={5} className="p-1"></td></tr>
+                {/* COGS rows */}
+                {cogsParams.map((p, i) => (
+                  <tr key={p.key} className="border-b border-white/5 bg-red-500/[0.03] hover:bg-red-500/[0.06] transition-colors">
+                    {i === 0 && (
+                      <td rowSpan={cogsParams.length} className="p-3 lg:p-2 text-xs font-black text-red-500/60 uppercase tracking-widest align-top">
+                        COGS
+                      </td>
+                    )}
+                    <td className="p-3 lg:p-2 text-slate-300 font-medium">{p.label}</td>
+                    <td className="p-3 lg:p-2 text-center">
+                      <div className="inline-flex items-center gap-1">
+                        <input
+                          type="number"
+                          value={inputs[p.key]}
+                          min={p.min}
+                          max={p.max}
+                          step={p.step}
+                          onChange={(e) => updateParam(p.key, parseFloat(e.target.value) || 0)}
+                          className="w-16 lg:w-14 bg-slate-900/80 text-red-400 border border-white/10 rounded-lg px-2 py-1 text-center text-xs font-bold focus:outline-none focus:border-red-500/50 no-spinner"
+                        />
+                        <span className="text-[10px] text-slate-500 font-bold">{p.suffix}</span>
+                      </div>
+                    </td>
+                    <td className="p-3 text-right text-[11px] text-slate-500 font-medium lg:hidden">{getFormula(p)}</td>
+                    <td className="p-3 lg:p-2 text-right font-bold text-red-400">-{formatCurrency(getResult(p))}</td>
+                  </tr>
+                ))}
 
-              {/* Net Profit */}
-              <tr className="bg-emerald-500/10 border-2 border-emerald-500/30">
-                <td colSpan={3} className="p-4 font-black text-emerald-400 uppercase tracking-widest">Net Profit</td>
-                <td className="p-4 text-right text-slate-400 font-bold">{results.margin.toFixed(0)}% margin</td>
-                <td className="p-4 text-right font-black text-emerald-400 text-lg">{formatCurrency(results.netProfit)}</td>
-              </tr>
-            </tbody>
-          </table>
+                {/* COGS total */}
+                <tr className="border-b-2 border-red-500/20 bg-red-500/[0.06]">
+                  <td colSpan={3} className="p-3 lg:p-2 font-black text-red-400 text-xs uppercase tracking-widest">Total COGS</td>
+                  <td className="p-3 lg:hidden"></td>
+                  <td className="p-3 lg:p-2 text-right font-black text-red-400 text-base">-{formatCurrency(results.totalCogs)}</td>
+                </tr>
+
+                {/* Spacer */}
+                <tr><td colSpan={5} className="p-1"></td></tr>
+
+                {/* Net Profit */}
+                <tr className="bg-emerald-500/10 border-2 border-emerald-500/30">
+                  <td colSpan={2} className="p-4 lg:p-3 font-black text-emerald-400 uppercase tracking-widest">Net Profit</td>
+                  <td className="p-4 lg:p-3 text-right text-slate-400 font-bold text-xs">{results.margin.toFixed(0)}% margin</td>
+                  <td className="p-4 lg:hidden"></td>
+                  <td className="p-4 lg:p-3 text-right font-black text-emerald-400 text-lg">{formatCurrency(results.netProfit)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Reset */}
