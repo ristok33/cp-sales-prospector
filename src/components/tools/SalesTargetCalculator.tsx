@@ -7,7 +7,7 @@ import { UNIT_ECON_DEFAULTS, calculateRevenuePerTenant } from '@/lib/unit-econom
 const FIXED_TIMELINE_OPTIONS = [6, 12, 24, 36];
 const MAX_DYNAMIC_MONTHS = 120;
 const AVG_RENT_PRESETS = [500, 750, 1000, 1500, 2000];
-const BASIC_OP_RATE = 0.5; // CasaPay Payments plan: 0.5% op take rate only
+const BASIC_OP_RATE = 1; // CasaPay Payments plan: 1% op take rate only
 
 function formatCompact(val: number): string {
   if (val >= 1_000_000) return '\u00A3' + (val / 1_000_000).toFixed(1) + 'M';
@@ -84,7 +84,7 @@ function buildTimeline(
     const onTimeOpRevenue = onTimeTenants * avgRent * opTakeRateDecimal;
     const onTimeTenantRevenue = onTimeTenants * (avgRent * (tpvRate - opTakeRateDecimal) + fixedPerTenant);
 
-    // Basic tenants: 0.5% op take only, no tenant fees
+    // Basic tenants: 1% op take only, no tenant fees
     const basicOpRevenue = basicTenants * avgRent * basicRateDecimal;
 
     const opSideRevenue = onTimeOpRevenue + basicOpRevenue;
@@ -100,15 +100,6 @@ function buildTimeline(
   });
 }
 
-const GLOSSARY = [
-  { term: 'TPV', definition: 'Total Payment Volume. The total rent collected through CasaPay per month.' },
-  { term: 'Portfolio', definition: 'Your total active operators generating recurring monthly revenue.' },
-  { term: 'Revenue/Operator', definition: "CasaPay's monthly revenue per operator: operator pays 2.5% take rate, tenants generate subs + fees." },
-  { term: 'Commission', definition: "Your personal monthly earnings: 10% of CasaPay's gross revenue from your portfolio." },
-  { term: 'Tenants/Operator', definition: 'Average number of tenants managed by each operator account.' },
-  { term: 'Conversion Rate', definition: 'Monthly % of tenants upgrading from CasaPay Payments to CasaPay On-Time (cumulative until 100%).' },
-  { term: 'Ramp-up', definition: 'Months to reach full sales velocity (linear growth during this period).' },
-];
 
 export default function SalesTargetCalculator() {
   const [avgRent, setAvgRent] = useState(1000);
@@ -168,31 +159,20 @@ export default function SalesTargetCalculator() {
           <p className="text-xs text-slate-500 font-medium mt-0.5">Operators &times; tenants &times; revenue streams &rarr; your commission</p>
         </div>
 
-        {/* Primary input + Glossary */}
-        <div className="flex items-start gap-4">
-          <div className="glass-card p-4 rounded-xl border border-emerald-500/20 space-y-2 max-w-sm animate-in fade-in duration-300">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <DollarSign size={14} className="text-emerald-400" />
-                <p className="text-[9px] font-black text-emerald-400 uppercase tracking-widest">Target Monthly Commission</p>
-              </div>
-              <span className="text-sm font-black text-white">{formatCompact(targetCommission)}</span>
+        {/* Primary input */}
+        <div className="glass-card p-4 rounded-xl border border-emerald-500/20 space-y-2 max-w-sm animate-in fade-in duration-300">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <DollarSign size={14} className="text-emerald-400" />
+              <p className="text-[9px] font-black text-emerald-400 uppercase tracking-widest">Target Monthly Commission</p>
             </div>
-            <input type="range" min={1000} max={100000} step={500} value={targetCommission} onChange={(e) => setTargetCommission(Number(e.target.value))} className="w-full accent-emerald-500" />
-            <div className="flex flex-wrap gap-1">
-              {[2500, 5000, 10000, 25000, 50000].map((p) => (
-                <button key={p} onClick={() => setTargetCommission(p)} className={`px-2 py-0.5 rounded text-[9px] font-bold ${targetCommission === p ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-white/5 text-slate-600 border border-transparent'}`}>{formatCompact(p)}</button>
-              ))}
-            </div>
+            <span className="text-sm font-black text-white">{formatCompact(targetCommission)}</span>
           </div>
-
-          <div className="pt-1 shrink-0 min-w-0 flex-1">
-            <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mb-1">Glossary</p>
-            <div className="space-y-0.5">
-              {GLOSSARY.map(({ term, definition }) => (
-                <p key={term} className="text-[8px] text-slate-600 leading-tight"><span className="font-bold text-slate-500">{term}</span> &mdash; {definition}</p>
-              ))}
-            </div>
+          <input type="range" min={1000} max={100000} step={500} value={targetCommission} onChange={(e) => setTargetCommission(Number(e.target.value))} className="w-full accent-emerald-500" />
+          <div className="flex flex-wrap gap-1">
+            {[2500, 5000, 10000, 25000, 50000].map((p) => (
+              <button key={p} onClick={() => setTargetCommission(p)} className={`px-2 py-0.5 rounded text-[9px] font-bold ${targetCommission === p ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-white/5 text-slate-600 border border-transparent'}`}>{formatCompact(p)}</button>
+            ))}
           </div>
         </div>
 
@@ -200,9 +180,10 @@ export default function SalesTargetCalculator() {
         <div>
           <button
             onClick={() => setShowAssumptions(!showAssumptions)}
-            className="text-[10px] font-bold text-slate-500 hover:text-slate-300 transition-colors uppercase tracking-widest"
+            className="text-[10px] font-bold text-slate-500 hover:text-slate-300 transition-colors uppercase tracking-widest flex items-center gap-2"
           >
-            Assumptions {showAssumptions ? '\u25BE' : '\u25B8'}
+            Assumptions
+            <span className="flex items-center justify-center w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] transition-transform duration-200" style={{ transform: showAssumptions ? 'rotate(180deg)' : 'rotate(0deg)' }}>{'\u25BE'}</span>
           </button>
           {showAssumptions && (
             <div className="grid grid-cols-2 gap-3 mt-2 animate-in fade-in duration-200">
@@ -250,7 +231,7 @@ export default function SalesTargetCalculator() {
                     <p className="text-[9px] font-bold text-slate-400 group-hover:text-slate-300 transition-colors">Operator brings existing portfolio</p>
                     <p className="text-[8px] text-slate-600 leading-tight mt-0.5">
                       {existingPortfolio
-                        ? 'All tenants active day 1 on CasaPay Payments (0.5% op take). Conversion rate = upgrade to CasaPay On-Time (2.5% + tenant fees).'
+                        ? 'All tenants active day 1 on CasaPay Payments (1% op take). Conversion rate = upgrade to CasaPay On-Time (2.5% + tenant fees).'
                         : 'Only converted tenants generate revenue. Enable if operators migrate existing book.'}
                     </p>
                   </div>
@@ -338,7 +319,7 @@ export default function SalesTargetCalculator() {
                 <h3 className="text-xs font-black text-white uppercase tracking-tight">Monthly Commission</h3>
                 <span className="text-[8px] font-bold uppercase tracking-widest text-slate-600">Hover for details</span>
               </div>
-              <div className="flex items-end gap-1 h-48 overflow-visible pb-1">
+              <div className="flex items-end gap-1 h-48 overflow-visible pb-4 relative">
                 {activeTimeline.map((point) => {
                   const onTimeHeight = (point.onTimeCommission / maxMonthlyCommission) * 100;
                   const paymentsHeight = (point.paymentsCommission / maxMonthlyCommission) * 100;
@@ -383,8 +364,9 @@ export default function SalesTargetCalculator() {
                           />
                         )}
                       </div>
+                      {/* Month label — positioned absolutely so it doesn't affect bar height */}
                       {(isQuarter || activeTimeline.length <= 12) && (
-                        <span className={`text-[7px] mt-0.5 font-bold ${isYear ? 'text-emerald-400' : isRamping ? 'text-amber-500/60' : 'text-slate-600'}`}>{point.month}</span>
+                        <span className={`absolute -bottom-4 text-[7px] font-bold ${isYear ? 'text-emerald-400' : isRamping ? 'text-amber-500/60' : 'text-slate-600'}`}>{point.month}</span>
                       )}
                     </div>
                   );
@@ -394,7 +376,7 @@ export default function SalesTargetCalculator() {
               <div className="flex items-center gap-4 mt-2 text-[8px] font-bold text-slate-600">
                 <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-sm bg-emerald-500/70" /><span>On-Time (2.5% + tenant fees) &mdash; {formatFull(final.onTimeCommission)}/mo</span></div>
                 {existingPortfolio && (
-                  <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-sm bg-sky-500/50" /><span>Payments (0.5% op only) &mdash; {formatFull(final.paymentsCommission)}/mo</span></div>
+                  <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-sm bg-sky-500/50" /><span>Payments (1% op only) &mdash; {formatFull(final.paymentsCommission)}/mo</span></div>
                 )}
                 {rampMonths > 0 && (
                   <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-sm bg-amber-500/50" /><span>Ramp ({rampMonths}mo)</span></div>
