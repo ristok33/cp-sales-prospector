@@ -260,11 +260,11 @@ export default function SalesTargetCalculator() {
               {/* On-Time Plan Conversion */}
               <div className="glass-card p-4 rounded-xl border border-white/10 space-y-2">
                 <div className="flex items-center justify-between">
-                  <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">On-Time Plan Conversion <span className="normal-case font-medium text-slate-600">(% upgrading to On-Time/mo)</span></p>
+                  <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">On-Time Plan Conversion <span className="normal-case font-medium text-slate-600">(% of tenants onboarded/mo)</span></p>
                   <span className="text-sm font-black text-white">{monthlyConversion}%/mo</span>
                 </div>
                 <input type="range" min={5} max={100} step={5} value={monthlyConversion} onChange={(e) => setMonthlyConversion(Number(e.target.value))} className="w-full accent-emerald-500" />
-                <p className="text-[8px] text-slate-600 font-medium">{monthlyConversion >= 100 ? 'Instant (all tenants day 1)' : `${Math.ceil(100 / monthlyConversion)}mo to full conversion`}</p>
+                <p className="text-[8px] text-slate-600 font-medium">{monthlyConversion >= 100 ? 'Instant (all tenants day 1)' : `Operator onboards ${monthlyConversion}% of tenants to On-Time each month → ${Math.ceil(100 / monthlyConversion)}mo to full portfolio`}</p>
               </div>
 
               {/* Ramp-up */}
